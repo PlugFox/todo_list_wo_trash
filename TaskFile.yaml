@@ -1,0 +1,52 @@
+version: "3"
+
+includes:
+  domain:
+    taskfile: ./domain/Taskfile.yaml
+    dir: ./domain
+  data:
+    taskfile: ./data/Taskfile.yaml
+    dir: ./data
+
+tasks:
+  flutter:get:
+    desc: Get flutter dependencies
+    summary: |
+      Get flutter dependencies
+    cmds:
+      - flutter pub get
+
+  dart:fix:
+    desc: Fix dart files
+    summary: |
+      Fix dart files
+    cmds:
+      - dart fix --apply
+
+  dart:format:
+    desc: Format dart files
+    summary: |
+      Format dart files
+    cmds:
+      - dart format --set-exit-if-changed .
+
+  dart:gen:
+    desc: Generate dart files
+    summary: |
+      Run codegen
+    cmds:
+      - dart run build_runner build
+
+  dart:gen:force:
+    desc: Generate dart files
+    summary: |
+      Run codegen with --delete-conflicting-outputs
+    cmds:
+      - dart run build_runner build --delete-conflicting-outputs
+
+  dart:gen:watch:
+    desc: Generate dart files with watch
+    summary: |
+      Watch codegen
+    cmds:
+      - dart run build_runner watch --delete-conflicting-outputs

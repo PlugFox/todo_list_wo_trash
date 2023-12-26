@@ -1,0 +1,73 @@
+name: todo_list
+description: "TODO-list app."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  collection: any
+  async: any
+  meta: any
+
+  # Accessibility
+  accessibility_tools: ^1.0.1
+
+  # i10n
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+
+  # State management
+  elementary: ^3.0.0
+  elementary_helper: ^1.0.1
+
+  # Router
+  auto_route: ^7.8.4
+
+  # Logic
+  bloc: ^8.1.2
+  bloc_concurrency: ^0.2.3
+  domain:
+    path: ./domain
+
+  # Data
+  data:
+    path: ./data
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+  # Code gen
+  flutter_gen_runner: ^5.3.2
+  auto_route_generator: ^7.3.2
+  build_runner: ^2.4.7
+
+  # Common
+  flutter_native_splash: ^2.3.8
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+
+flutter_gen:
+  output: lib/generated/assets/
+  line_length: 80
+  style: camel-case
+
+flutter_intl:
+  enabled: true
+  class_name: S
+  main_locale: ru
+  arb_dir: lib/core/l10n
+  output_dir: lib/generated/l10n
