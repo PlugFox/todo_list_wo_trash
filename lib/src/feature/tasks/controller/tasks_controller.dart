@@ -7,7 +7,7 @@ import 'package:domain/task/repository/task_repository.dart';
 import 'package:flutter/foundation.dart';
 
 sealed class TasksState {
-  TasksState._(this.tasks) : _table = {for (final task in tasks) task.id: task};
+  TasksState._(this.tasks);
 
   factory TasksState.loading(List<TaskEntity> tasks) = TasksState$Loading;
 
@@ -19,7 +19,7 @@ sealed class TasksState {
   abstract final bool isIdle;
   abstract final bool isError;
   final List<TaskEntity> tasks;
-  final Map<Id, TaskEntity> _table;
+  late final Map<Id, TaskEntity> _table = {for (final task in tasks) task.id: task};
   TaskEntity? getById(Id id) => _table[id];
 }
 
