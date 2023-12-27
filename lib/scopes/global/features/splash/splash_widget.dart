@@ -31,9 +31,10 @@ class _SplashLoaderWithProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Center(
-          child: CircularProgressIndicator.adaptive(
-        value: loadingProgress,
-      ));
+        child: CircularProgressIndicator.adaptive(
+          value: loadingProgress,
+        ),
+      );
 }
 
 /// A widget that displays a splash loader without progress.

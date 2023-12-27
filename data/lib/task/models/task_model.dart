@@ -1,8 +1,8 @@
 import 'package:data/common/serializers/datetime.dart';
-import 'package:domain/task/dto/task_create_request.dart';
 import 'package:domain/task/entities/task_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:uuid/uuid.dart';
+
 part 'task_model.g.dart';
 
 @JsonSerializable()
@@ -32,10 +32,10 @@ class TaskDataModel {
       );
 
   /// Create a task from a create request.
-  factory TaskDataModel.fromRequest(TaskCreateRequest request) => TaskDataModel(
+  factory TaskDataModel.create({required String title, required String description}) => TaskDataModel(
         id: const Uuid().v6(),
-        title: request.title,
-        description: request.description,
+        title: title,
+        description: description,
         createdAt: DateTime.now(),
       );
 

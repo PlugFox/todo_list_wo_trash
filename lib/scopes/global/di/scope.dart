@@ -9,5 +9,5 @@ class _GlobalScope extends InheritedWidget {
   final GlobalScopeDependencies dependencies;
 
   @override
-  bool updateShouldNotify(_GlobalScope oldWidget) => false;
+  bool updateShouldNotify(covariant _GlobalScope oldWidget) => false;
 }

@@ -31,15 +31,13 @@ dependencies:
   auto_route: ^7.8.4
 
   # Logic
-  bloc: ^8.1.2
-  bloc_concurrency: ^0.2.3
   domain:
     path: ./domain
 
   # Data
   data:
     path: ./data
-  
+
 
 dev_dependencies:
   flutter_test:

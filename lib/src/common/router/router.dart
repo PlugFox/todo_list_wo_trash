@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:todo_list/core/router/router.gr.dart';
+import 'package:todo_list/src/common/router/router.gr.dart';
 
 /// {@template app_router}
 /// App router
@@ -15,10 +15,10 @@ class AppRouter extends $AppRouter {
           initial: true,
           children: [
             AutoRoute(
-              page: TasksListRoute.page,
+              page: TasksScreen.page,
               initial: true,
             ),
-            AutoRoute(page: TaskCreateRoute.page),
+            AutoRoute(page: CreateTaskScreen.page),
           ],
         ),
       ];

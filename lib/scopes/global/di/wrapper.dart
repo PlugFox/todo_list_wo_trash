@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:todo_list/core/router/router.dart';
-import 'package:todo_list/core/theme/components_theme.dart';
 import 'package:todo_list/scopes/global/features/splash/splash_widget.dart';
+import 'package:todo_list/src/common/router/router.dart';
+import 'package:todo_list/src/common/theme/components_theme.dart';
 
-part 'scope.dart';
 part 'dependencies.dart';
+part 'scope.dart';
 
 /// {@template global_scope}
 /// A wrapper widget that provides a global scope for the application.
