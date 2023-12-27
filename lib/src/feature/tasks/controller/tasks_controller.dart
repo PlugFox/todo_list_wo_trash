@@ -107,7 +107,7 @@ class TasksController extends ValueNotifier<TasksState> {
   }
 
   Future<void> _handle(Future<void> Function() fn) async {
-    _setState(TasksState.error(value.tasks));
+    _setState(TasksState.loading(value.tasks));
     try {
       await fn();
     } on Object {
