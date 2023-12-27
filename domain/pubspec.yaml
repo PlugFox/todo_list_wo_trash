@@ -6,7 +6,6 @@ environment:
   sdk: ^3.2.3
 
 dependencies:
-  bloc: ^8.1.2
   freezed_annotation: ^2.4.1
 
 dev_dependencies:
