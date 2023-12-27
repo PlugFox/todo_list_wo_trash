@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:domain/task/entities/task_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_list/generated/l10n/l10n.dart';
@@ -9,7 +8,6 @@ import 'package:todo_list/src/feature/tasks/widget/tasks_scope.dart';
 /// {@template create_task_screen}
 /// CreateTaskScreen widget.
 /// {@endtemplate}
-@RoutePage()
 class CreateTaskScreen extends StatefulWidget {
   /// {@macro create_task_screen}
   const CreateTaskScreen({
@@ -29,32 +27,34 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
   void initState() {
     super.initState();
     tasksController = Dependencies.of(context).tasksController;
-    tasksController.addListener(_onStateChanged);
   }
 
   @override
   void dispose() {
-    tasksController.removeListener(_onStateChanged);
     super.dispose();
   }
 
-  void _onStateChanged() {
+  void _onTaskCreated(TaskEntity task) {
     if (!mounted) return;
-    if (tasksController.value.isIdle) AutoRouter.of(context).pop();
+    Navigator.pop(context);
+    _showSnackbar('Task successfully created', color: Colors.green);
   }
 
-  void _showErrorSnackbar() {
+  void _showSnackbar(String text, {Color? color}) {
     if (!mounted) return;
     ScaffoldMessenger.maybeOf(context)?.showSnackBar(
-      SnackBar(content: Text(S.of(context).fillAllFields)),
+      SnackBar(
+        content: Text(text),
+        backgroundColor: color,
+      ),
     );
   }
 
   bool _validate() => _titleController.text.isNotEmpty && _descriptionController.text.isNotEmpty;
 
   void _onAddTap() {
-    if (!_validate()) return _showErrorSnackbar();
-    tasksController.create(_titleController.text, _descriptionController.text);
+    if (!_validate()) return _showSnackbar(S.of(context).fillAllFields, color: Colors.red);
+    tasksController.create(_titleController.text, _descriptionController.text, created: _onTaskCreated);
   }
 
   @override

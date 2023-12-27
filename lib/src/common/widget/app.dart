@@ -4,41 +4,25 @@ import 'package:data/task/sources/local/task_local_ds_mock.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:todo_list/generated/l10n/l10n.dart';
-import 'package:todo_list/scopes/global/di/wrapper.dart';
 import 'package:todo_list/src/common/widget/dependencies.dart';
 import 'package:todo_list/src/feature/tasks/controller/tasks_controller.dart';
 import 'package:todo_list/src/feature/tasks/widget/tasks_scope.dart';
+import 'package:todo_list/src/feature/tasks/widget/tasks_screen.dart';
 
 /// {@template app}
 /// App
 ///
 /// A widget is responsible for initializing the application.
 /// {@endtemplate}
-class App extends StatelessWidget {
+class App extends StatefulWidget {
   /// {@macro app}
   const App({super.key});
 
   @override
-  Widget build(BuildContext context) => GlobalScope(
-        child: (context) => _App(
-          dependencies: GlobalScope.of(context),
-        ),
-      );
+  State<App> createState() => _AppState();
 }
 
-class _App extends StatefulWidget {
-  const _App({required this.dependencies});
-
-  final GlobalScopeDependencies dependencies;
-
-  @override
-  State<_App> createState() => _AppState();
-}
-
-class _AppState extends State<_App> {
-  final bool _shouldUseAccessibilityTools = true;
-  GlobalScopeDependencies get dependencies => widget.dependencies;
-
+class _AppState extends State<App> {
   late final TasksController _tasksController;
 
   @override
@@ -58,16 +42,9 @@ class _AppState extends State<_App> {
   }
 
   @override
-  Widget build(BuildContext context) => MaterialApp.router(
-        routerConfig: dependencies.router.config(),
-        theme: ThemeData.light().copyWith(
-          inputDecorationTheme: dependencies.componentsTheme.inputDecorationTheme,
-          colorScheme: const ColorScheme.light(),
-        ),
-        darkTheme: ThemeData.dark().copyWith(
-          inputDecorationTheme: dependencies.componentsTheme.inputDecorationTheme,
-          colorScheme: const ColorScheme.dark(),
-        ),
+  Widget build(BuildContext context) => MaterialApp(
+        theme: ThemeData.light(),
+        darkTheme: ThemeData.dark(),
         supportedLocales: S.delegate.supportedLocales,
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
@@ -75,14 +52,14 @@ class _AppState extends State<_App> {
           GlobalWidgetsLocalizations.delegate,
           S.delegate,
         ],
-        builder: (context, child) {
-          final accessibilityTools = _shouldUseAccessibilityTools ? AccessibilityTools(child: child) : child!;
-          return Dependencies.wrap(
-            tasksController: _tasksController,
-            child: TasksScope(
-              child: accessibilityTools,
+        home: const TasksScreen(),
+        builder: (context, child) => Dependencies.wrap(
+          tasksController: _tasksController,
+          child: TasksScope(
+            child: AccessibilityTools(
+              child: child,
             ),
-          );
-        },
+          ),
+        ),
       );
 }

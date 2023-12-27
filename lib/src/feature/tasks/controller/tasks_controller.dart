@@ -65,9 +65,15 @@ class TasksController extends ValueNotifier<TasksState> {
 
   final TaskRepository _repository;
 
-  void create(final String title, final String description) => _handle(() async {
+  void create(
+    final String title,
+    final String description, {
+    void Function(TaskEntity)? created,
+  }) =>
+      _handle(() async {
         final newTask = await _repository.create(title: title, description: description);
         _setState(TasksState.idle([...value.tasks, newTask]));
+        created?.call(newTask);
       });
 
   void fetch(TaskFilterCompletedType filter) => _handle(() async {

@@ -1,13 +1,11 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_list/generated/l10n/l10n.dart';
-import 'package:todo_list/src/common/router/router.gr.dart';
+import 'package:todo_list/src/feature/tasks/widget/create_task_screen.dart';
 import 'package:todo_list/src/feature/tasks/widget/tasks_scope.dart';
 
 /// {@template tasks_screen}
 /// TasksScreen widget.
 /// {@endtemplate}
-@RoutePage()
 class TasksScreen extends StatelessWidget {
   /// {@macro tasks_screen}
   const TasksScreen({
@@ -21,7 +19,12 @@ class TasksScreen extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           tooltip: S.of(context).createTask,
-          onPressed: () => AutoRouter.of(context).push(const CreateTaskScreen()),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute<void>(
+              builder: (_) => const CreateTaskScreen(),
+            ),
+          ),
           child: const Icon(Icons.add),
         ),
         body: const _TaskListView(),

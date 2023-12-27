@@ -57,22 +57,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
-  auto_route:
-    dependency: "direct main"
-    description:
-      name: auto_route
-      sha256: "82f8df1d177416bc6b7a449127d0270ff1f0f633a91f2ceb7a85d4f07c3affa1"
-      url: "https://pub.dev"
-    source: hosted
-    version: "7.8.4"
-  auto_route_generator:
-    dependency: "direct dev"
-    description:
-      name: auto_route_generator
-      sha256: "11067a3bcd643812518fe26c0c9ec073990286cabfd9d74b6da9ef9b913c4d22"
-      url: "https://pub.dev"
-    source: hosted
-    version: "7.3.2"
   bloc:
     dependency: transitive
     description:
@@ -263,22 +247,6 @@ packages:
       relative: true
     source: path
     version: "1.0.0"
-  elementary:
-    dependency: "direct main"
-    description:
-      name: elementary
-      sha256: "9b8385fac1c2102918a512d7a80ce0babe61af960f3c86902a671b09131d958c"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.0"
-  elementary_helper:
-    dependency: "direct main"
-    description:
-      name: elementary_helper
-      sha256: "2b24eba824c864a50716da269b89bf068a55809acb9671fa9766f7700e49a476"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.1"
   fake_async:
     dependency: transitive
     description:
@@ -576,14 +544,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
-  source_gen:
-    dependency: transitive
-    description:
-      name: source_gen
-      sha256: "14658ba5f669685cd3d63701d01b31ea748310f7ab854e471962670abcf57832"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.5.0"
   source_span:
     dependency: transitive
     description:
